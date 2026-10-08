@@ -1,3 +1,5 @@
+package moves;
+
 import ru.ifmo.se.pokemon.*;
 
 public final class Swagger extends StatusMove {

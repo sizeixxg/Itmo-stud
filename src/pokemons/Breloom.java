@@ -1,3 +1,6 @@
+package pokemons;
+
+import moves.MachPunch;
 import ru.ifmo.se.pokemon.Type;
 
 public final class Breloom extends Shroomish {

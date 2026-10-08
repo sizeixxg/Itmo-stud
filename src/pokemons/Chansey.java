@@ -1,4 +1,6 @@
+package pokemons;
 
+import moves.SeismicToss;
 
 public class Chansey extends Happiny {
     public Chansey(String name, int level){

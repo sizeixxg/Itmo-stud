@@ -1,3 +1,9 @@
+package pokemons;
+
+import moves.Confide;
+import moves.DoubleEdge;
+import moves.Flamethrower;
+import moves.SeedBomb;
 import ru.ifmo.se.pokemon.Pokemon;
 import ru.ifmo.se.pokemon.Type;
 

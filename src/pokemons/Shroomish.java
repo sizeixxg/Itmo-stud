@@ -1,3 +1,8 @@
+package pokemons;
+
+import moves.Confide;
+import moves.SludgeBomb;
+import moves.Swagger;
 import ru.ifmo.se.pokemon.Pokemon;
 import ru.ifmo.se.pokemon.Type;
 

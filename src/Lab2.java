@@ -1,4 +1,5 @@
 
+import pokemons.*;
 import ru.ifmo.se.pokemon.*;
 
 

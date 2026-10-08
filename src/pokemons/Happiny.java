@@ -1,3 +1,7 @@
+package pokemons;
+
+import moves.DreamEater;
+import moves.Swagger;
 import ru.ifmo.se.pokemon.Pokemon;
 import ru.ifmo.se.pokemon.Type;
 

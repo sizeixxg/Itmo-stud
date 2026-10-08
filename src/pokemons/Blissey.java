@@ -1,4 +1,6 @@
+package pokemons;
 
+import moves.ChargeBeam;
 
 public final class Blissey extends Chansey {
     public Blissey(String name, int level){
