@@ -1,4 +1,4 @@
-package Exceptions;
+package еxceptions;
 
 public class EscapeFailedException extends Exception {
     private final int slaveScore;
@@ -11,6 +11,6 @@ public class EscapeFailedException extends Exception {
 
     @Override
     public String getMessage(){
-        return "Охранник оказался сильнее Робинзона";
+        return "Охранник оказался сильнее"+guardScore +"заключенного"+slaveScore;
     }
 }
