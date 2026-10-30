@@ -1,4 +1,4 @@
-package еxceptions;
+package exceptions;
 
 public class EscapeFailedException extends Exception {
     private final int slaveScore;
