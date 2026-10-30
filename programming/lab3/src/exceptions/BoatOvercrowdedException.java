@@ -8,6 +8,6 @@ public class BoatOvercrowdedException extends RuntimeException {
 
     @Override
     public String getMessage(){
-        return ("Лодка переполнена:"+capacity+"необходимо высадить 1 человека");
+        return "Лодка переполнена:"+capacity+" необходимо высадить 1 человека";
     }
 }

@@ -11,6 +11,6 @@ public class EscapeFailedException extends Exception {
 
     @Override
     public String getMessage(){
-        return "Охранник оказался сильнее"+guardScore +"заключенного"+slaveScore;
+        return "Охранник оказался сильнее:"+guardScore +" заключенного:"+slaveScore;
     }
 }
