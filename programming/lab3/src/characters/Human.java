@@ -34,11 +34,11 @@ public abstract class Human {
         else
             stamina=0;
     }
-    abstract protected void makeDecision(WeatherCondition condition);
+    abstract public void makeDecision(WeatherCondition condition);
 
     @Override
     public String toString(){
-        return "имя= "+ name + "остаток сил= "+ stamina + "умения: ;" +skills;
+        return "имя= "+ name + " остаток сил= "+ stamina + "умения: " +skills;
     }
     @Override
     public boolean equals(Object obj){
@@ -48,7 +48,7 @@ public abstract class Human {
             return false;
         Human o = (Human) obj;
 
-        return (Objects.equals(name, o.name)||Objects.equals(skills, o.skills));
+        return (Objects.equals(name, o.name) && Objects.equals(skills, o.skills));
     }
 
     @Override
