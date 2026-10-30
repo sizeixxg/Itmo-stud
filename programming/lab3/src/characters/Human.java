@@ -1,13 +1,14 @@
 package characters;
 
+import enums.WeatherCondition;
 import records.SkillSet;
 
 public abstract class Human {
-    final private String name;
+    private final String name;
     private int stamina=100;
     private final SkillSet skills;
 
-    public Human(String name, SkillSet skills){
+    protected Human(String name, SkillSet skills){
         this.name=name;
         this.skills=skills;
     }
@@ -23,7 +24,13 @@ public abstract class Human {
     }
 
     protected void reduceStamina(int amount){
-        stamina-=amount;
+        if (stamina-amount>0)
+            stamina-=amount;
+        else
+            stamina=0;
     }
+    void makeDesicion(WeatherCondition condition){
+    }
+
 
 }
