@@ -23,14 +23,17 @@ public abstract class Human {
         return skills;
     }
 
-    protected void reduceStamina(int amount){
+    protected void reduceStamina(int amount) throws IllegalAccessException{
+        if (amount<0)
+            throw new IllegalAccessException("Выносливость не может быть отрицательной");
         if (stamina-amount>0)
             stamina-=amount;
         else
             stamina=0;
     }
-    void makeDesicion(WeatherCondition condition){
-    }
+    abstract protected void makeDecision(WeatherCondition condition);
+
+
 
 
 }
