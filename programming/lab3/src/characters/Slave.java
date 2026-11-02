@@ -11,19 +11,28 @@ public class Slave extends Human implements Rower, Fisher {
     private PirateGuard guard;
     private boolean isfree;
     public Slave(String name, SkillSet skills, PirateGuard guard){
-        super(name , skills);
+        super(name, skills);
         this.isfree=false;
         this.guard=guard;
     }
 
-    private void tryEscape(PirateGuard guard) throws EscapeFailedException {
-        int slaveScore=this.getSkills().strength();
-        int guardScore=guard.getSkills().strength();
+    private void tryEscape(PirateGuard guard, WeatherCondition condition, Boat boat) throws EscapeFailedException {
+        guard.setElite(this);
+        guard.makeDecision(condition,boat);
+        int guardScore = guard.getSkills().strength();
+        int slaveScore = this.getSkills().strength();
+        if (guard.isElite()==true) {
+            guardScore+=10;
+        }
+        if (!guard.isVigilaint()){
+            slaveScore+=10;
+        }
         if (slaveScore<guardScore){
             throw new EscapeFailedException(slaveScore,guardScore);
         }
-        this.isfree=true;
-
+        else {
+            this.isfree = true;
+        }
     }
 
     public boolean getisfree(){
@@ -38,7 +47,7 @@ public class Slave extends Human implements Rower, Fisher {
 
     @Override
     public void fish(Boat boat) {
-        while (boat.getFish()<50 || getStamina()>0) {
+        while (boat.getFish()<50 && getStamina()>0) {
             int caught = getSkills().fishingSkill();
             boat.addFish(caught);
             reduceStamina(5);
@@ -51,12 +60,14 @@ public class Slave extends Human implements Rower, Fisher {
             switch (condition){
                 case STORM,FOG:
                     try{
-                        tryEscape(guard);
+                        tryEscape(guard, condition, boat);
                     } catch (EscapeFailedException err){
                         System.out.println(err.getMessage());
                     }
+                    break;
                 case CLEAR:
                     System.out.println("Погода не позволила осуществить попытку побега");
+                    break;
             }
         }
     }

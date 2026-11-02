@@ -9,7 +9,7 @@ public class PirateGuard extends Human implements Rower {
     private boolean vigilaint;
     private boolean Elite;
 
-    PirateGuard(String name, SkillSet skills){
+    public PirateGuard(String name, SkillSet skills){
         super(name, skills);
         this.vigilaint=false;
         this.Elite=false;
@@ -42,7 +42,7 @@ public class PirateGuard extends Human implements Rower {
                 break;
         }
     }
-    private void setElite(Slave rab){
+    public void setElite(Slave rab){
         if (rab.getSkills().fishingSkill()>5){
             Elite=false;
         }
@@ -50,7 +50,4 @@ public class PirateGuard extends Human implements Rower {
             Elite = true;
         }
     }
-
-
-
 }
