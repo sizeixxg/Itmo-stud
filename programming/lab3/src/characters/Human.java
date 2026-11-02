@@ -26,7 +26,7 @@ public abstract class Human {
 
     protected void reduceStamina(int amount) throws IllegalArgumentException{
         if (amount<0) {
-            throw new IllegalArgumentException("Выносливость не может быть отрицательной");
+            throw new IllegalArgumentException("Силы на исходе");
         }
         if (stamina-amount>0) {
             stamina -= amount;
@@ -34,6 +34,7 @@ public abstract class Human {
         else
             stamina=0;
     }
+
     abstract public void makeDecision(WeatherCondition condition);
 
     @Override
