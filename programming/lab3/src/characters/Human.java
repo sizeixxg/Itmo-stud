@@ -49,7 +49,6 @@ public abstract class Human {
         if (obj == null || obj.getClass()!=this.getClass())
             return false;
         Human o = (Human) obj;
-
         return (Objects.equals(name, o.name) && Objects.equals(skills, o.skills));
     }
 

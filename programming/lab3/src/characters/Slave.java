@@ -34,6 +34,25 @@ public class Slave extends Human implements Rower, Fisher {
             this.isfree = true;
         }
     }
+    private void tryEscape(PirateGuard guard, Slave slave2, WeatherCondition condition, Boat boat) throws EscapeFailedException {
+        guard.setElite(this);
+        guard.makeDecision(condition,boat);
+        int guardScore = guard.getSkills().strength();
+        int slaveScore = this.getSkills().strength()+slave2.getSkills().strength();
+        if (guard.isElite()==true) {
+            guardScore+=10;
+        }
+        if (!guard.isVigilaint()){
+            slaveScore+=10;
+        }
+        if (slaveScore<guardScore){
+            throw new EscapeFailedException(slaveScore,guardScore);
+        }
+        else {
+            this.isfree = true;
+            slave2.isfree=true;
+        }
+    }
 
     public boolean getisfree(){
         return isfree;
