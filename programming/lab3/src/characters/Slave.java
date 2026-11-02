@@ -10,6 +10,7 @@ import records.SkillSet;
 public class Slave extends Human implements Rower, Fisher {
     private PirateGuard guard;
     private boolean isfree;
+
     public Slave(String name, SkillSet skills, PirateGuard guard){
         super(name, skills);
         this.isfree=false;
@@ -59,9 +60,12 @@ public class Slave extends Human implements Rower, Fisher {
     }
 
     @Override
-    public void row(Boat boat){
-        super.reduceStamina(15 - getSkills().rowingSkill());
-        System.out.println(getName()+" гребет,сил осталось: "+getStamina());
+    public void row(Boat boat) {
+        while (boat.getDistance() < 50 && super.getStamina()>0) {
+            boat.addDistance(this);
+            super.reduceStamina(15 - getSkills().rowingSkill());
+            System.out.println(getName() + " гребет,сил осталось: " + getStamina());
+        }
     }
 
     @Override
@@ -80,8 +84,12 @@ public class Slave extends Human implements Rower, Fisher {
                 case STORM,FOG:
                     try{
                         tryEscape(guard, condition, boat);
+                        if (isfree==true){
+                            System.out.println("Побег удался!");
+                        }
                     } catch (EscapeFailedException err){
                         System.out.println(err.getMessage());
+                        boat.returnToHarbor(this);
                     }
                     break;
                 case CLEAR:

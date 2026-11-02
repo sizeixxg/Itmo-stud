@@ -13,9 +13,18 @@ public class Boat {
     private int fishStock;
     private int capacity=3;
     private boolean atSea;
+    private int distanceFromLand=0;
 
     public void addFish(int amount){
         this.fishStock+=amount;
+    }
+
+    public int getDistance(){
+        return distanceFromLand;
+    }
+
+    public void addDistance(Rower rower){
+        distanceFromLand+=rower.getSkills().rowingSkill();
     }
 
     public int getFish(){
@@ -28,20 +37,24 @@ public class Boat {
         }
         else {
             crew.add(rower);
+            System.out.println(rower.getName()+" Сел в лодку");
         }
     }
 
     public void removePassanger(Rower rower){
         crew.remove(rower);
+        System.out.println(rower.getName()+" Вышел покурить, место освободилось");
     }
 
     public void sail(){
         atSea=true;
+        System.out.println("Лодка вышла в море");
     }
 
     public void returnToHarbor(Slave slave){
         if (slave.getisfree()==false){
             atSea=false;
+            distanceFromLand=0;
             System.out.println("Попытка побега была провалена, лодка возращается в порт");
         }
     }
