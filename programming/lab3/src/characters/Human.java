@@ -1,6 +1,7 @@
 package characters;
 
 import enums.WeatherCondition;
+import items.Boat;
 import records.SkillSet;
 import java.util.Objects;
 
@@ -35,7 +36,7 @@ public abstract class Human {
             stamina=0;
     }
 
-    abstract public void makeDecision(WeatherCondition condition);
+    abstract public void makeDecision(WeatherCondition condition, Boat boat);
 
     @Override
     public String toString(){

@@ -1,23 +1,32 @@
 package characters;
 
 import enums.WeatherCondition;
+import exceptions.EscapeFailedException;
 import interfaces.Fisher;
 import interfaces.Rower;
 import items.Boat;
 import records.SkillSet;
 
 public class Slave extends Human implements Rower, Fisher {
+    private PirateGuard guard;
     private boolean isfree;
-    public Slave(String name, SkillSet skills){
+    public Slave(String name, SkillSet skills, PirateGuard guard){
         super(name , skills);
         this.isfree=false;
+        this.guard=guard;
     }
 
-    private void tryEscape(PirateGuard guard){
+    private void tryEscape(PirateGuard guard) throws EscapeFailedException {
+        int slaveScore=this.getSkills().strength();
+        int guardScore=guard.getSkills().strength();
+        if (slaveScore<guardScore){
+            throw new EscapeFailedException(slaveScore,guardScore);
+        }
+        this.isfree=true;
 
     }
 
-    public boolean isIsfree(){
+    public boolean getisfree(){
         return isfree;
     }
 
@@ -38,11 +47,17 @@ public class Slave extends Human implements Rower, Fisher {
 
     @Override
     public void makeDecision(WeatherCondition condition, Boat boat){
-        if (condition==WeatherCondition.FOG && boat.getFish()>=50){
-
+        if (boat.getFish()>=50){
+            switch (condition){
+                case STORM,FOG:
+                    try{
+                        tryEscape(guard);
+                    } catch (EscapeFailedException err){
+                        System.out.println(err.getMessage());
+                    }
+                case CLEAR:
+                    System.out.println("Погода не позволила осуществить попытку побега");
+            }
         }
     }
-
-
-
 }
