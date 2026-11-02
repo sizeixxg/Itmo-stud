@@ -24,7 +24,7 @@ public class PirateGuard extends Human implements Rower {
 
     @Override
     public void row(Boat boat) {
-        while (boat.getDistance() < 50 && super.getStamina()>0) {
+        if (boat.getDistance() < 50 && super.getStamina()>0) {
             boat.addDistance(this);
             super.reduceStamina(15 - getSkills().rowingSkill());
             System.out.println(getName() + " тоже гребет,сил осталось: " + getStamina());

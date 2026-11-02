@@ -27,6 +27,22 @@ public class Boat {
         distanceFromLand+=rower.getSkills().rowingSkill();
     }
 
+    public void rowToDistance(int targetDistance){
+        while (distanceFromLand<targetDistance){
+            int currentDistance = distanceFromLand;
+            for (Rower rower:crew){
+                rower.row(this);
+                if (distanceFromLand>=targetDistance){
+                    break;
+                }
+            }
+            if (currentDistance==distanceFromLand){
+                System.out.println("Лодка встала, никто не может продолжать грести");
+                break;
+            }
+        }
+    }
+
     public int getFish(){
         return fishStock;
     }
