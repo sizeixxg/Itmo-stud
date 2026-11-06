@@ -33,6 +33,7 @@ public class Boat {
             for (Rower rower:crew){
                 rower.row(this);
                 if (distanceFromLand>=targetDistance){
+                    System.out.println("Лодка отплыла на необходимое расстояние, можно рыбачить");
                     break;
                 }
             }

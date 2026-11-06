@@ -61,7 +61,7 @@ public class Slave extends Human implements Rower, Fisher {
 
     @Override
     public void row(Boat boat) {
-        if (boat.getDistance() < 50 && super.getStamina()>0) {
+        if (super.getStamina()>0) {
             boat.addDistance(this);
             super.reduceStamina(15 - getSkills().rowingSkill());
             System.out.println(getName() + " гребет,сил осталось: " + getStamina());
