@@ -29,7 +29,6 @@ public class Main {
         } else {
             System.out.println(count + " раба пытаются сесть в лодку, мест осталось:"+ placesForSlave);
         }
-        int bestSlave = 0;
         for (int i = 0; i < count; i++) {
             Slave slave = new Slave("Раб " + (i + 1), new SkillSet((int)(Math.random()*10), (int)(Math.random()*10), (int)(Math.random()*10)), guard);
             try {
