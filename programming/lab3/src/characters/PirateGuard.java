@@ -27,7 +27,7 @@ public class PirateGuard extends Human implements Rower {
         if (super.getStamina()>0) {
             boat.addDistance(this);
             super.reduceStamina(15 - getSkills().rowingSkill());
-            System.out.println(getName() + " тоже гребет,сил осталось: " + getStamina());
+            System.out.println(getName() + " гребет,сил осталось: " + getStamina());
         }
     }
 
@@ -52,5 +52,13 @@ public class PirateGuard extends Human implements Rower {
         else {
             Elite = true;
         }
+    }
+    public void setElite(Slave slave1, Slave slave2) {
+        int bestFishingSkill = Math.max(
+                slave1.getSkills().fishingSkill(),
+                slave2.getSkills().fishingSkill()
+        );
+
+        this.Elite = bestFishingSkill <= 5;
     }
 }

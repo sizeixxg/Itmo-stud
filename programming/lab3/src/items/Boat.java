@@ -11,7 +11,7 @@ import java.util.Objects;
 public class Boat {
     private List<Rower> crew = new ArrayList<>();
     private int fishStock;
-    private int capacity=3;
+    private int capacity=4;
     private boolean atSea;
     private int distanceFromLand=0;
 
@@ -74,6 +74,11 @@ public class Boat {
             distanceFromLand=0;
             System.out.println("Попытка побега была провалена, лодка возращается в порт");
         }
+    }
+    public void returnToHarbor() {
+        atSea = false;
+        distanceFromLand = 0;
+        System.out.println("Поймать достаточно рыбы не удалось, лодка с злым пиратом возвращается в порт");
     }
 
     public List<Rower> getCrew(){

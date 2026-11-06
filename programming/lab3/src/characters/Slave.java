@@ -32,6 +32,7 @@ public class Slave extends Human implements Rower, Fisher {
             throw new EscapeFailedException(slaveScore,guardScore);
         }
         else {
+            System.out.println("Раб оказался сильнее: " + slaveScore + " чем охранник: " + guardScore + " , лодка вышла в открытое море, охранник остался за бортом");
             this.isfree = true;
         }
     }
@@ -50,6 +51,7 @@ public class Slave extends Human implements Rower, Fisher {
             throw new EscapeFailedException(slaveScore,guardScore);
         }
         else {
+            System.out.println("Рабы вместе оказались сильнее: " + slaveScore + " чем охранник: " + guardScore + " , лодка вышла в открытое море, охранник остался за бортом");
             this.isfree = true;
             slave2.isfree=true;
         }
@@ -70,10 +72,16 @@ public class Slave extends Human implements Rower, Fisher {
 
     @Override
     public void fish(Boat boat) {
+        if (getStamina() <= 0) {
+            System.out.println(getName() + " слишком устал, чтобы рыбачить.");
+            return;
+        }
         while (boat.getFish()<50 && getStamina()>0) {
             int caught = getSkills().fishingSkill();
             boat.addFish(caught);
             reduceStamina(5);
+            System.out.println(getName() + " поймал " + caught + " рыб. Общий улов: " + boat.getFish() + ". Сил осталось: " + getStamina()
+            );
         }
     }
 

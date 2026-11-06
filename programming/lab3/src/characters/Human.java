@@ -40,7 +40,7 @@ public abstract class Human {
 
     @Override
     public String toString(){
-        return "имя="+ name + " остаток сил="+ stamina + " умения:" +skills;
+        return "имя="+ name + " остаток сил="+ stamina + " умения: сила " + skills.strength() + " ловля рыбы " + skills.fishingSkill() + " гербля " + skills.rowingSkill() ;
     }
     @Override
     public boolean equals(Object obj){
