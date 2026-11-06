@@ -23,7 +23,7 @@ public class Main {
             System.out.println(err.getMessage());
         }
 
-        int count = (int) (Math.random() * 4) + 1;
+        int count = (int) (Math.random() * 3) + 1;
         if (count==1){
             System.out.println(count+" раб пытаются сесть в лодку, мест осталось: "+ placesForSlave);
         } else {
