@@ -14,22 +14,28 @@ public class Main {
         WeatherCondition condition = WeatherCondition.RandCondition();
 
         Boat aurora = new Boat();
+        int placesForSlave= aurora.getCapacity()-1;
 
         PirateGuard guard = new PirateGuard("Пиратик", new SkillSet((int)(Math.random()*10), (int)(Math.random()*10), (int)(Math.random()*10)));
         try {
             aurora.addPasanger(guard);
         }catch (BoatOvercrowdedException err){
-            err.getMessage();
+            System.out.println(err.getMessage());
         }
 
-        int count = (int) (Math.random() * 3);
+        int count = (int) (Math.random() * 4) + 1;
+        if (count==1){
+            System.out.println(count+" раб пытаются сесть в лодку, мест осталось: "+ placesForSlave);
+        } else {
+            System.out.println(count + " раба пытаются сесть в лодку, мест осталось:"+ placesForSlave);
+        }
         int bestSlave = 0;
         for (int i = 0; i < count; i++) {
             Slave slave = new Slave("Раб " + (i + 1), new SkillSet((int)(Math.random()*10), (int)(Math.random()*10), (int)(Math.random()*10)), guard);
             try {
                 aurora.addPasanger(slave);
             }catch (BoatOvercrowdedException err){
-                err.getMessage();
+                System.out.println(err.getMessage());
             }
         }
 

@@ -22,6 +22,7 @@ public class Boat {
     public int getDistance(){
         return distanceFromLand;
     }
+    public int getCapacity(){return capacity;}
 
     public void addDistance(Rower rower){
         distanceFromLand+=rower.getSkills().rowingSkill();
