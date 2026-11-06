@@ -104,15 +104,16 @@ public class Slave extends Human implements Rower, Fisher {
                             tryEscape(guard,condition,boat);
                         }
                         if (isfree==true){
+                            boat.removePassanger(guard);
                             System.out.println("Побег удался!");
                         }
                     } catch (EscapeFailedException err){
                         System.out.println(err.getMessage());
-                        boat.returnToHarbor(this);
+                        boat.returnToHarbor("Попытка побега провалилась.");
                     }
                     break;
                 case CLEAR:
-                    System.out.println("Погода не позволила осуществить попытку побега");
+                    boat.returnToHarbor("Погода не позволила продолжить путь.");
                     break;
             }
         }

@@ -59,8 +59,8 @@ public class Main {
                 }
             } else {
                 System.out.println("Силы закончились. Поймано рыбы: " + aurora.getFish());
-                aurora.returnToHarbor();
+                aurora.returnToHarbor("Не удалось поймать достаточно рыбы.");
             }
-        }
+        } else aurora.returnToHarbor("Не удалось доплыть до рыбного места.");
         }
     }

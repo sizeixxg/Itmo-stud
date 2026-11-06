@@ -69,21 +69,14 @@ public class Boat {
         System.out.println("Лодка вышла в море");
     }
 
-    public void returnToHarbor(Slave slave){
-        if (slave.getisfree()==false){
-            atSea=false;
-            distanceFromLand=0;
-            System.out.println("Попытка побега была провалена, лодка возращается в порт");
-        }
-    }
-    public void returnToHarbor() {
+    public void returnToHarbor(String reason) {
         atSea = false;
         distanceFromLand = 0;
-        System.out.println("Поймать достаточно рыбы не удалось, лодка с злым пиратом возвращается в порт");
+        System.out.println(reason + " Лодка возвращается в порт.");
     }
 
     public List<Rower> getCrew(){
-        return crew;
+        return List.copyOf(crew);
     }
 
     @Override
